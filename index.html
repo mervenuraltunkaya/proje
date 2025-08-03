@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tüketici Hakları Rehberi & AI Asistanı</title>
+    <style>
+      :root {
+        /* Light Mode Colors */
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #e2e8f0;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --accent-primary: #3b82f6;
+        --accent-secondary: #1e40af;
+        --accent-tertiary: #dbeafe;
+        --shadow-light: rgba(59, 130, 246, 0.1);
+        --shadow-medium: rgba(0, 0, 0, 0.1);
+        --shadow-heavy: rgba(0, 0, 0, 0.2);
+        --border-color: #e2e8f0;
+        --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        --gradient-secondary: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        --gradient-hero: linear-gradient(
+          135deg,
+          #3b82f6 0%,
+          #1e40af 50%,
+          #1e3a8a 100%
+        );
+      }
+
+      [data-theme="dark"] {
+        /* Dark Mode Colors */
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --accent-primary: #ef4444;
+        --accent-secondary: #dc2626;
+        --accent-tertiary: #450a0a;
+        --shadow-light: rgba(239, 68, 68, 0.2);
+        --shadow-medium: rgba(0, 0, 0, 0.3);
+        --shadow-heavy: rgba(0, 0, 0, 0.5);
+        --border-color: #334155;
+        --gradient-primary: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        --gradient-secondary: linear-gradient(135deg, #450a0a 0%, #7f1d1d 100%);
+        --gradient-hero: linear-gradient(
+          135deg,
+          #ef4444 0%,
+          #dc2626 50%,
+          #991b1b 100%
+        );
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background: var(--bg-secondary);
+        transition: all 0.3s ease;
+      }
+
+      /* Header */
+      .header {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 4px 20px var(--shadow-medium);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-icon {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 32px;
+      }
+
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        padding: 8px 16px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-menu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+
+      /* Theme Toggle */
+      .theme-toggle {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: var(--gradient-hero);
+        color: white;
+        padding: 120px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>')
+          repeat;
+        opacity: 0.5;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0.8) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 16px 32px;
+        border: none;
+        border-radius: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-primary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 80px 24px;
+      }
+
+      /* Categories Section */
+      .categories {
+        margin-bottom: 80px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 4rem;
+        color: var(--text-primary);
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 32px;
+      }
+
+      .category-card {
+        background: var(--bg-primary);
+        padding: 40px;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px var(--shadow-medium);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .category-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .category-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px var(--shadow-light);
+        border-color: var(--accent-primary);
+      }
+
+      .category-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .category-card:hover .category-icon {
+        transform: scale(1.1);
+      }
+
+      .category-card h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        font-weight: 700;
+      }
+
+      .category-card p {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .category-features {
+        list-style: none;
+      }
+
+      .category-features li {
+        padding: 8px 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 24px;
+        transition: color 0.3s ease;
+      }
+
+      .category-features li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent-primary);
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .category-card:hover .category-features li {
+        color: var(--text-primary);
+      }
+
+      /* Quick Access */
+      .quick-access {
+        background: var(--bg-primary);
+        padding: 60px;
+        border-radius: 32px;
+        box-shadow: 0 12px 48px var(--shadow-medium);
+        margin-bottom: 80px;
+        border: 1px solid var(--border-color);
+      }
+
+      .quick-access h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--text-primary);
+        font-size: 2.25rem;
+        font-weight: 700;
+      }
+
+      .quick-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .quick-btn {
+        background: var(--gradient-secondary);
+        color: var(--text-primary);
+        padding: 24px;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+        border: 1px solid var(--border-color);
+      }
+
+      .quick-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px var(--shadow-light);
+        background: var(--gradient-primary);
+        color: white;
+      }
+
+      /* AI Chat Float Button */
+      .ai-chat-float {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        width: 70px;
+        height: 70px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 8px 32px var(--shadow-light);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        border: 3px solid var(--bg-primary);
+      }
+
+      .ai-chat-float:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 12px 48px var(--shadow-heavy);
+      }
+
+      .ai-chat-float span {
+        font-size: 28px;
+        color: white;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(8px);
+      }
+
+      .modal.show {
+        display: flex;
+      }
+
+      .modal-content {
+        background: var(--bg-primary);
+        width: 95%;
+        max-width: 1000px;
+        height: 85%;
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 20px 80px var(--shadow-heavy);
+        border: 1px solid var(--border-color);
+      }
+
+      .modal-header {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-header h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .modal-close {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+      }
+
+      /* Chat Modal */
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .chat-messages {
+        flex: 1;
+        padding: 24px;
+        overflow-y: auto;
+        background: var(--bg-secondary);
+        scroll-behavior: smooth;
+      }
+
+      /* Custom Scrollbar */
+      .chat-messages::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .chat-messages::-webkit-scrollbar-track {
+        background: var(--bg-tertiary);
+        border-radius: 4px;
+      }
+
+      .chat-messages::-webkit-scrollbar-thumb {
+        background: var(--accent-primary);
+        border-radius: 4px;
+      }
+
+      .chat-messages::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-secondary);
+      }
+
+      .message {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 12px;
+        animation: slideInUp 0.3s ease-out;
+      }
+
+      .message.user {
+        flex-direction: row-reverse;
+      }
+
+      .message-content {
+        max-width: 75%;
+        padding: 16px 20px;
+        border-radius: 20px;
+        line-height: 1.5;
+        font-size: 15px;
+      }
+
+      .message.user .message-content {
+        background: var(--gradient-primary);
+        color: white;
+        border-bottom-right-radius: 8px;
+      }
+
+      .message.assistant .message-content {
+        background: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        border-bottom-left-radius: 8px;
+        box-shadow: 0 2px 12px var(--shadow-medium);
+      }
+
+      .chat-input {
+        padding: 24px;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        gap: 12px;
+        align-items: flex-end;
+      }
+
+      .chat-input input {
+        flex: 1;
+        padding: 16px 20px;
+        border: 2px solid var(--border-color);
+        border-radius: 20px;
+        outline: none;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        font-size: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .chat-input input:focus {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px var(--shadow-light);
+      }
+
+      .chat-input button {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 16px 24px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        min-width: 80px;
+      }
+
+      .chat-input button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px var(--shadow-light);
+      }
+
+      .typing-indicator {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+
+      .typing-indicator span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-primary);
+        animation: typing 1.4s infinite ease-in-out;
+      }
+
+      .typing-indicator span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .typing-indicator span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .typing-indicator span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes typing {
+        0%,
+        60%,
+        100% {
+          transform: scale(0.8);
+          opacity: 0.5;
+        }
+        30% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .category-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-content {
+          width: 98%;
+          height: 95%;
+          margin: 1%;
+        }
+
+        .quick-access {
+          padding: 32px 24px;
+        }
+
+        .main-content {
+          padding: 60px 16px;
+        }
+
+        .ai-chat-float {
+          bottom: 20px;
+          right: 20px;
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      /* Smooth transitions for theme switching */
+      * {
+        transition: background-color 0.3s ease, color 0.3s ease,
+          border-color 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="nav-container">
+        <div class="logo">
+          <div class="logo-icon">🛡️</div>
+          <span>Tüketici Hakları</span>
+        </div>
+        <div class="nav-controls">
+          <nav>
+            <ul class="nav-menu">
+              <li><a onclick="showSection('home')">Ana Sayfa</a></li>
+              <li><a onclick="showSection('guide')">Rehber</a></li>
+              <li><a onclick="showSection('rights')">Haklarım</a></li>
+              <li><a onclick="showSection('complaint')">Şikayet</a></li>
+              <li><a onclick="openChat()">AI Asistan</a></li>
+            </ul>
+          </nav>
+          <button
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            title="Tema Değiştir"
+          >
+            <span id="themeIcon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Tüketici Haklarınızı Bilin</h1>
+        <p>
+          Yapay zeka destekli modern platform ile tüketici haklarınızı öğrenin,
+          sorularınıza anında cevap alın ve haklarınızı güvenle koruyun.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn btn-primary" onclick="openChat()">
+            🤖 AI Asistan ile Konuş
+          </button>
+          <button class="btn btn-secondary" onclick="alert('Rehber yakında!')">
+            📚 Rehberi İncele
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Categories -->
+      <section class="categories">
+        <h2 class="section-title">Tüketici Hakları Kategorileri</h2>
+        <div class="category-grid">
+          <div class="category-card" onclick="alert('İade bilgileri yakında!')">
+            <div class="category-icon">📦</div>
+            <h3>İade Hakları</h3>
+            <p>
+              Online alışverişlerinizde 14 günlük iade hakkınız ve diğer iade
+              süreçleri hakkında bilgi alın.
+            </p>
+            <ul class="category-features">
+              <li>14 günlük cayma hakkı</li>
+              <li>İade şartları ve istisnaları</li>
+              <li>İade süreci adımları</li>
+              <li>Kargo masrafları</li>
+            </ul>
+          </div>
+
+          <div
+            class="category-card"
+            onclick="alert('Garanti bilgileri yakında!')"
+          >
+            <div class="category-icon">🛡️</div>
+            <h3>Garanti Hakları</h3>
+            <p>
+              Satın aldığınız ürünlerde karşılaştığınız sorunlarda garanti
+              haklarınızı öğrenin.
+            </p>
+            <ul class="category-features">
+              <li>2 yıllık yasal garanti</li>
+              <li>Ayıplı mal hakları</li>
+              <li>Onarım, değişim, iade</li>
+              <li>Yetkili servis süreçleri</li>
+            </ul>
+          </div>
+
+          <div
+            class="category-card"
+            onclick="alert('Kargo bilgileri yakında!')"
+          >
+            <div class="category-icon">🚚</div>
+            <h3>Kargo & Teslimat</h3>
+            <p>
+              Geç gelen kargolar, hasarlı teslimatlar ve teslimat sorunları için
+              haklarınızı bilin.
+            </p>
+            <ul class="category-features">
+              <li>Teslimat süre hakları</li>
+              <li>Geç teslimat tazminatı</li>
+              <li>Hasarlı kargo hakları</li>
+              <li>Kargo firması sorumlulukları</li>
+            </ul>
+          </div>
+
+          <div
+            class="category-card"
+            onclick="alert('Şikayet bilgileri yakında!')"
+          >
+            <div class="category-icon">📢</div>
+            <h3>Şikayet Süreçleri</h3>
+            <p>
+              Tüketici haklarınızın ihlal edildiği durumlarda nereye, nasıl
+              başvuracağınızı öğrenin.
+            </p>
+            <ul class="category-features">
+              <li>Tüketici Hakem Heyeti</li>
+              <li>e-Devlet başvuru süreci</li>
+              <li>Gerekli belgeler</li>
+              <li>Süreç takibi</li>
+            </ul>
+          </div>
+
+          <div
+            class="category-card"
+            onclick="alert('E-ticaret bilgileri yakında!')"
+          >
+            <div class="category-icon">💻</div>
+            <h3>E-Ticaret Hakları</h3>
+            <p>
+              Online alışverişlerinizde özel tüketici haklarınızı ve dijital
+              güvenlik bilgilerini öğrenin.
+            </p>
+            <ul class="category-features">
+              <li>Mesafeli satış hakları</li>
+              <li>Dijital ürün iadesi</li>
+              <li>Güvenli ödeme hakları</li>
+              <li>Sahte site korunması</li>
+            </ul>
+          </div>
+
+          <div
+            class="category-card"
+            onclick="alert('Özel durum bilgileri yakında!')"
+          >
+            <div class="category-icon">⭐</div>
+            <h3>Özel Durumlar</h3>
+            <p>
+              Tatil paketleri, ikinci el alışveriş ve özel durumlar için
+              tüketici haklarınızı öğrenin.
+            </p>
+            <ul class="category-features">
+              <li>Tatil paketi hakları</li>
+              <li>İkinci el alışveriş</li>
+              <li>Taksitli satış</li>
+              <li>Kapıda ödeme hakları</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Access -->
+      <section class="quick-access">
+        <h2>🚀 Hızlı Erişim - Sık Sorulan Sorular</h2>
+        <div class="quick-buttons">
+          <button
+            class="quick-btn"
+            onclick="quickQuestion('Aldığım ürün arızalı çıktı, ne yapabilirim?')"
+          >
+            <strong>🔧 Arızalı Ürün</strong><br />
+            Aldığım ürün bozuk geldi, garanti haklarım neler?
+          </button>
+          <button
+            class="quick-btn"
+            onclick="quickQuestion('Kargo 20 gündür gelmedi, ne yapmalıyım?')"
+          >
+            <strong>⏰ Geç Kargo</strong><br />
+            Siparişim çok geç geldi, tazminat alabilir miyim?
+          </button>
+          <button
+            class="quick-btn"
+            onclick="quickQuestion('14 günü geçti ama iade edebilir miyim?')"
+          >
+            <strong>↩️ İade Süresi</strong><br />
+            İade sürem geçti, yine de iade edebilir miyim?
+          </button>
+          <button
+            class="quick-btn"
+            onclick="quickQuestion('Mağaza garantiyi kabul etmiyor, ne yapmalıyım?')"
+          >
+            <strong>🛠️ Garanti Reddi</strong><br />
+            Garanti hakkımı kullanamıyorum, nereye başvurabilirim?
+          </button>
+          <button
+            class="quick-btn"
+            onclick="quickQuestion('Online alışverişte dolandırıldım, ne yapabilirim?')"
+          >
+            <strong>⚠️ Dolandırıcılık</strong><br />
+            Sahte siteden alışveriş yaptım, param gitti
+          </button>
+          <button
+            class="quick-btn"
+            onclick="quickQuestion('Aboneliğimi iptal edemiyorum, yardım edin')"
+          >
+            <strong>📱 Abonelik İptali</strong><br />
+            İstemediğim aboneliği iptal edemiyorum
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- AI Chat Float Button -->
+    <div
+      class="ai-chat-float"
+      onclick="openChat()"
+      title="AI Asistan ile Konuş"
+    >
+      <span>🤖</span>
+    </div>
+
+    <!-- Modal for Chat -->
+    <div class="modal" id="chatModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>🤖 AI Tüketici Hakları Asistanı</h3>
+          <button class="modal-close" onclick="closeChat()">&times;</button>
+        </div>
+        <div class="chat-container">
+          <div class="chat-messages" id="chatMessages">
+            <div class="message assistant">
+              <div class="message-content">
+                Merhaba! Ben AI tüketici hakları asistanınızım. Size nasıl
+                yardımcı olabilirim?
+                <br /><br />
+                <strong>Sorularınızı günlük dilinizle sorabilirsiniz:</strong
+                ><br />
+                • "Aldığım telefon bozuk, ne yapabilirim?"<br />
+                • "Kargo geç geldi, paramı geri alabilir miyim?"<br />
+                • "14 günlük iade sürem geçti, ne olacak?"
+              </div>
+            </div>
+          </div>
+          <div class="chat-input">
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Sorununuzu yazın..."
+              onkeypress="handleChatKey(event)"
+            />
+            <button onclick="sendChatMessage()">Gönder</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      console.log("🚀 Tüketici Hakları sitesi yüklendi!");
+
+      // Gemini API Configuration
+      const GEMINI_API_KEY = (VITE_GEMINI_API_KEY = your_actual_api_key_here);
+      const GEMINI_API_URL =
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+
+      // Theme Management
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById("themeIcon");
+
+        if (body.getAttribute("data-theme") === "dark") {
+          body.removeAttribute("data-theme");
+          themeIcon.textContent = "🌙";
+          localStorage.setItem("theme", "light");
+        } else {
+          body.setAttribute("data-theme", "dark");
+          themeIcon.textContent = "☀️";
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      // Load saved theme on page load
+      function loadTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        const themeIcon = document.getElementById("themeIcon");
+
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+          themeIcon.textContent = "☀️";
+        } else {
+          themeIcon.textContent = "🌙";
+        }
+      }
+
+      // Chat Functions
+      function openChat() {
+        console.log("💬 Chat açılıyor...");
+        document.getElementById("chatModal").classList.add("show");
+        // Scroll to bottom when opening
+        setTimeout(scrollToBottom, 100);
+      }
+
+      function closeChat() {
+        console.log("❌ Chat kapatılıyor...");
+        document.getElementById("chatModal").classList.remove("show");
+      }
+
+      function handleChatKey(event) {
+        if (event.key === "Enter") {
+          sendChatMessage();
+        }
+      }
+
+      function quickQuestion(question) {
+        console.log("❓ Hızlı soru:", question);
+        openChat();
+        document.getElementById("chatInput").value = question;
+        setTimeout(() => sendChatMessage(), 500);
+      }
+
+      function scrollToBottom() {
+        const container = document.getElementById("chatMessages");
+        container.scrollTop = container.scrollHeight;
+      }
+
+      function sendChatMessage() {
+        const input = document.getElementById("chatInput");
+        const message = input.value.trim();
+
+        console.log("📤 Mesaj gönderiliyor:", message);
+
+        if (!message) return;
+
+        addChatMessage(message, "user");
+        input.value = "";
+
+        // Auto scroll after adding user message
+        setTimeout(scrollToBottom, 100);
+
+        // Show loading
+        showChatLoading(true);
+
+        // Get AI response
+        getAIResponse(message)
+          .then((response) => {
+            showChatLoading(false);
+            addChatMessage(response, "assistant");
+            // Auto scroll after AI response
+            setTimeout(scrollToBottom, 100);
+          })
+          .catch((error) => {
+            showChatLoading(false);
+            console.error("❌ Chat hatası:", error);
+            addChatMessage(
+              "Üzgünüm, şu anda bir teknik sorun yaşıyorum. Lütfen daha sonra tekrar deneyin.",
+              "assistant"
+            );
+            setTimeout(scrollToBottom, 100);
+          });
+      }
+
+      function addChatMessage(message, sender) {
+        console.log(
+          `💬 Mesaj ekleniyor (${sender}):`,
+          message.substring(0, 50) + "..."
+        );
+
+        const container = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${sender}`;
+
+        const content = document.createElement("div");
+        content.className = "message-content";
+        content.innerHTML = formatChatMessage(message);
+
+        messageDiv.appendChild(content);
+        container.appendChild(messageDiv);
+
+        // Force scroll to bottom after adding message
+        setTimeout(scrollToBottom, 50);
+      }
+
+      function formatChatMessage(message) {
+        return message
+          .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\n/g, "<br>")
+          .replace(/•/g, "•");
+      }
+
+      function showChatLoading(show) {
+        const container = document.getElementById("chatMessages");
+
+        // Remove existing loading message
+        const existingLoading = container.querySelector(".loading-message");
+        if (existingLoading) {
+          existingLoading.remove();
+        }
+
+        if (show) {
+          console.log("⏳ Loading gösteriliyor...");
+          const loadingDiv = document.createElement("div");
+          loadingDiv.className = "message assistant loading-message";
+          loadingDiv.innerHTML = `
+                    <div class="message-content" style="opacity: 0.7;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span>AI düşünüyor</span>
+                            <div class="typing-indicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+          container.appendChild(loadingDiv);
+          scrollToBottom();
+        }
+      }
+
+      // AI Response Function
+      async function getAIResponse(userMessage) {
+        console.log("🤖 AI yanıtı hazırlanıyor...");
+
+        // API key kontrolü
+        if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
+          console.log("⚠️ API key ayarlanmamış, fallback kullanılıyor...");
+          return (
+            "⚠️ **API Ayarı Gerekli**\n\nGemini API key'i henüz ayarlanmamış. Şimdilik temel cevap veriyorum:\n\n" +
+            getBasicResponse(userMessage)
+          );
+        }
+
+        try {
+          console.log("📡 Gemini API çağrısı yapılıyor...");
+
+          const context = `Sen bir Türk Tüketici Hakları uzmanısın. Kullanıcı sorularına Türk Tüketici Kanunu'na göre cevap ver. 
+                
+                Temel bilgiler:
+                - Mesafeli satışlarda 14 gün iade hakkı
+                - Tüm ürünlerde 2 yıl garanti
+                - Şikayet için önce satıcı, sonra Tüketici Hakem Heyeti
+                - Kargo gecikmesinden satıcı sorumlu
+                
+                Cevaplarında: başlık kullan, hakları listele, pratik adımlar ver, cesaretlendir.`;
+
+          const response = await fetch(
+            `${GEMINI_API_URL}?key=${GEMINI_API_KEY}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                contents: [
+                  {
+                    parts: [
+                      {
+                        text: `${context}\n\nKullanıcı Sorusu: ${userMessage}`,
+                      },
+                    ],
+                  },
+                ],
+                generationConfig: {
+                  temperature: 0.7,
+                  maxOutputTokens: 1024,
+                },
+              }),
+            }
+          );
+
+          console.log("📊 API Response Status:", response.status);
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("API Error Response:", errorText);
+            throw new Error(`API Error: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (
+            data.candidates &&
+            data.candidates[0] &&
+            data.candidates[0].content
+          ) {
+            console.log("✅ Gemini cevabı alındı");
+            return (
+              "🤖 **Gemini AI Asistan**\n\n" +
+              data.candidates[0].content.parts[0].text
+            );
+          } else {
+            throw new Error("Invalid API response");
+          }
+        } catch (error) {
+          console.error("❌ Gemini API Error:", error);
+          return (
+            "⚠️ **API Hatası**\n\nGemini API'de sorun oluştu. Temel cevap veriyorum:\n\n" +
+            getBasicResponse(userMessage)
+          );
+        }
+      }
+
+      // Basic fallback responses
+      function getBasicResponse(message) {
+        const lower = message.toLowerCase();
+
+        if (lower.includes("iade") || lower.includes("geri ver")) {
+          return "**📦 İade Hakları**\n\nOnline alışverişlerde 14 gün içinde sebepsiz iade edebilirsiniz.\n\n• İade süresi teslimat tarihinden başlar\n• Ürün kullanılmamış olmalı\n• Satıcıya yazılı bildirim yapın\n• 14 gün içinde paranız iade edilir";
+        } else if (
+          lower.includes("garanti") ||
+          lower.includes("bozuk") ||
+          lower.includes("arızalı")
+        ) {
+          return "**🛡️ Garanti Hakları**\n\nTüm ürünlerde 2 yıl garanti hakkınız var.\n\n• Ücretsiz onarım isteyebilirsiniz\n• Onarım olmuyorsa değişim/iade\n• İlk 6 ay ayıbın satış anında olduğu kabul edilir\n• Yetkili servise başvurun";
+        } else if (lower.includes("kargo") || lower.includes("geç")) {
+          return "**🚚 Kargo Hakları**\n\nGeç teslimat durumunda haklarınız:\n\n• Sözleşmeden dönebilirsiniz\n• Para iadesini talep edebilirsiniz\n• Satıcıya yazılı bildirim yapın\n• Kargo gecikmesinden satıcı sorumludur";
+        } else if (lower.includes("şikayet") || lower.includes("başvuru")) {
+          return "**📢 Şikayet Yolları**\n\nSorun çözülmezse başvuru yapın:\n\n• Önce satıcıya yazılı başvuru\n• Tüketici Hakem Heyeti (e-Devlet)\n• Gümrük ve Ticaret Bakanlığı (Alo 171)\n• Tüketici mahkemeleri";
+        } else {
+          return "**🤝 Tüketici Hakları Yardımı**\n\nSize nasıl yardımcı olabilirim?\n\n• **İade işlemleri** - 14 günlük hakkınız\n• **Garanti sorunları** - 2 yıllık garanti\n• **Kargo sorunları** - Geç teslimat\n• **Şikayet süreçleri** - Nereye başvuracağınız\n\nSorununuzu detaylı anlatın, yardımcı olayım!";
+        }
+      }
+
+      // Fallback function for compatibility
+      function getFallbackResponse(message) {
+        return getBasicResponse(message);
+      }
+
+      // Modal close when clicking outside
+      window.onclick = function (event) {
+        const chatModal = document.getElementById("chatModal");
+        if (event.target === chatModal) {
+          closeChat();
+        }
+      };
+
+      // Placeholder functions for navigation
+      function showSection(section) {
+        alert(`${section} bölümü yakında gelecek!`);
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("✅ Sayfa tamamen yüklendi!");
+        loadTheme();
+      });
+    </script>
+  </body>
+</html>
